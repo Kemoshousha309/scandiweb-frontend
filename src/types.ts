@@ -44,6 +44,7 @@ interface FurnitureProduct {
 }
 
 export type Product = BookProduct | DVDProduct | FurnitureProduct;
+export type CheckableProducts = Product & { checked: boolean };
 
 export interface ProductsResponse {
   products: Product[];

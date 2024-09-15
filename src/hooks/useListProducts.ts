@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
-import { Product } from "../types";
 import { getProducts } from "../api";
-
-type CheckableProducts = Product & { checked: boolean };
+import { CheckableProducts } from "../types";
 
 export function useListProducts() {
   const [products, setProducts] = useState<CheckableProducts[]>([]);
 
   useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  // handlers
+  const fetchProducts = () => {
     getProducts()
       .then((res) => {
         const checkableProducts = res.response.products.map((p) => {
@@ -16,9 +19,7 @@ export function useListProducts() {
         setProducts(checkableProducts);
       })
       .catch((err) => console.log({ err }));
-  }, []);
-
-  // handlers
+  };
   const handleCheck = (id: string) => {
     const updatedProducts = products.map((p) => {
       if (p.id === id) {
@@ -28,5 +29,5 @@ export function useListProducts() {
     });
     setProducts(updatedProducts);
   };
-  return { products, handleCheck };
+  return { products, handleCheck, fetchProducts };
 }
