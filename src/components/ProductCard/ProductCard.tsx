@@ -1,10 +1,20 @@
 import { Product, ProductTypes } from "../../types";
 import styles from "./ProductCard.module.scss";
 
-const ProductCard = ({ product }: { product: Product }) => {
+interface Props {
+  product: Product;
+  checked: boolean;
+  checkHandler: (id: string) => void;
+}
+
+const ProductCard = ({ product, checked, checkHandler }: Props) => {
   return (
     <div className={styles.productCard}>
-      <input type="checkbox" />
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={() => checkHandler(product.id)}
+      />
       <span>{product.sku}</span>
       <span>{product.name}</span>
       <span>{product.price} $</span>
