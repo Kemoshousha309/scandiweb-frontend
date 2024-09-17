@@ -19,12 +19,12 @@ const ProductCard = ({ product, checked, checkHandler }: Props) => {
       <span>{product.name}</span>
       <span>{product.price} $</span>
       {product.type == ProductTypes.Book && (
-        <span>Weight {product.weight} KG</span>
+        <span>Weight: {product.weight} KG</span>
       )}
-      {product.type == ProductTypes.DVD && <span>Size {product.size} MB</span>}
+      {product.type == ProductTypes.DVD && <span>Size: {product.size} MB</span>}
       {product.type == ProductTypes.Furniture && (
         <span>
-          Dimensions
+          Dimensions: {" "}
           {product.height}x{product.width}x{product.length}
         </span>
       )}

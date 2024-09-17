@@ -53,3 +53,16 @@ export interface ProductsResponse {
 export interface ApiResponse<T> {
   response: T;
 }
+
+// types
+export interface ProductFormFields {
+  SKU?: string;
+  name?: string;
+  price?: number;
+  type?: ProductTypes;
+  size?: number;
+  weight?: number;
+  height?: number;
+  width?: number;
+  length?: number;
+}

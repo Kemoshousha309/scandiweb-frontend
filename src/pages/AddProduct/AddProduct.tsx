@@ -3,10 +3,14 @@ import Header from "../../components/Header/Header"
 import AddProductForm from "../../components/AddProductForm/AddProductForm"
 
 const AddProduct = () => {
+  const triggerFormSubmit = () => {
+    const form = document.querySelector("#product_form") as HTMLFormElement;
+    form.requestSubmit()
+  }
   return (
     <main>
       <Header title="Product Add">
-        <button onClick={() => {}}>Save</button>
+        <button onClick={triggerFormSubmit}>Save</button>
         <Link to="/">Cancel</Link>
       </Header>
       <AddProductForm />

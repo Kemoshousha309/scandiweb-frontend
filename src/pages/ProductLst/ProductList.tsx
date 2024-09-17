@@ -6,23 +6,28 @@ import { useMassDelete } from "../../hooks/useMassDelete";
 import { Link } from "react-router-dom";
 
 const ProductList = () => {
-  const { handleCheck, products,  fetchProducts} = useListProducts();
-  const {deleteHandler} = useMassDelete();
+  const { handleCheck, products, fetchProducts } = useListProducts();
+  const { deleteHandler } = useMassDelete();
 
-  // handlers 
+  // handlers
   const onDelete = async () => {
     try {
       await deleteHandler(products);
       fetchProducts();
-    }catch (err) {
-      console.log({err})
+    } catch (err) {
+      console.log({ err });
     }
-  }
+  };
   return (
     <main>
       <Header title="Product List">
         <Link to="add-product">ADD</Link>
-        <button onClick={onDelete}>MASS DELETE</button>
+        <button
+          onClick={onDelete}
+          disabled={!(products.filter((p) => p.checked).length > 0)}
+        >
+          MASS DELETE
+        </button>
       </Header>
       <div className={styles.productList}>
         {products.map((p) => (
