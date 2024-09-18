@@ -1,9 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import ProductCard from "../../components/ProductCard/ProductCard";
-import styles from "./ProductList.module.scss";
 import { useListProducts } from "../../hooks/useListProducts";
 import { useMassDelete } from "../../hooks/useMassDelete";
-import { Link } from "react-router-dom";
+import styles from "./ProductList.module.scss";
 
 const ProductList = () => {
   const { handleCheck, products, fetchProducts } = useListProducts();
@@ -18,16 +18,15 @@ const ProductList = () => {
       console.log({ err });
     }
   };
+  const navigate = useNavigate();
   return (
     <main>
       <Header title="Product List">
-        <Link to="add-product">ADD</Link>
+        <button onClick={() => navigate("add-product")}>ADD</button>
         <button
           onClick={onDelete}
           disabled={!(products.filter((p) => p.checked).length > 0)}
-        >
-          MASS DELETE
-        </button>
+        >MASS DELETE</button>
       </Header>
       <div className={styles.productList}>
         {products.map((p) => (

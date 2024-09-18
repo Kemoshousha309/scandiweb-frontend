@@ -1,7 +1,7 @@
 export enum ProductTypes {
-  Book = "book",
-  DVD = "dvd",
-  Furniture = "furniture",
+  Book = "Book",
+  DVD = "DVD",
+  Furniture = "Furniture",
 }
 
 interface BookProduct {

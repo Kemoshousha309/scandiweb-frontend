@@ -11,6 +11,7 @@ const ProductCard = ({ product, checked, checkHandler }: Props) => {
   return (
     <div className={styles.productCard}>
       <input
+        className="delete-checkbox"
         type="checkbox"
         checked={checked}
         onChange={() => checkHandler(product.id)}
@@ -18,14 +19,13 @@ const ProductCard = ({ product, checked, checkHandler }: Props) => {
       <span>{product.sku}</span>
       <span>{product.name}</span>
       <span>{product.price} $</span>
-      {product.type == ProductTypes.Book && (
+      {product.type == ProductTypes.Book.toLowerCase() && (
         <span>Weight: {product.weight} KG</span>
       )}
-      {product.type == ProductTypes.DVD && <span>Size: {product.size} MB</span>}
-      {product.type == ProductTypes.Furniture && (
+      {product.type == ProductTypes.DVD.toLowerCase() && <span>Size: {product.size} MB</span>}
+      {product.type == ProductTypes.Furniture.toLowerCase() && (
         <span>
-          Dimensions: {" "}
-          {product.height}x{product.width}x{product.length}
+          Dimensions: {product.height}x{product.width}x{product.length}
         </span>
       )}
     </div>

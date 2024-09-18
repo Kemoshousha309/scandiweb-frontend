@@ -17,10 +17,11 @@ export async function deleteProducts(ids: string[]) {
 
 export async function addProduct(product: ProductFormFields) {
   const body = {
-    dimensions: [product.height, product.width, product.length],
     ...product,
+    dimensions: [product.height, product.width, product.length],
+    type: product.type?.toLowerCase(),
   };
-  console.log({body})
+  console.log({ body });
   const response = await fetch(baseUrl + "/products", {
     method: "POST",
     body: JSON.stringify(body),
