@@ -3,7 +3,7 @@ import { getProducts } from "../api";
 import { CheckableProducts } from "../types";
 
 export function useListProducts() {
-  const [products, setProducts] = useState<CheckableProducts[]>([]);
+  const [products, setProducts] = useState<CheckableProducts[]>();
 
   useEffect(() => {
     fetchProducts();
@@ -21,6 +21,7 @@ export function useListProducts() {
       .catch((err) => console.log({ err }));
   };
   const handleCheck = (id: string) => {
+    if(products === undefined) return;
     const updatedProducts = products.map((p) => {
       if (p.id === id) {
         p.checked = !p.checked;

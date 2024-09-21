@@ -13,8 +13,8 @@ const ProductCard = ({ product, checked, checkHandler }: Props) => {
       <input
         className="delete-checkbox"
         type="checkbox"
-        checked={checked}
-        onChange={() => checkHandler(product.id)}
+        value={checked +""}
+        onClick={() => checkHandler(product.id)}
       />
       <span>{product.sku}</span>
       <span>{product.name}</span>

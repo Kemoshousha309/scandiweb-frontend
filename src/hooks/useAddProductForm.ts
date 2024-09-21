@@ -34,7 +34,6 @@ export function useAddProductForm() {
           setError(`${key}: ${err[key]}`);
         }
       }
-      return;
     }
 
     navigate("/");

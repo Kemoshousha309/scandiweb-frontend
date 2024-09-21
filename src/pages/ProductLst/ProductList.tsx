@@ -12,6 +12,7 @@ const ProductList = () => {
   // handlers
   const onDelete = async () => {
     try {
+      if (products === undefined) return;
       await deleteHandler(products);
       fetchProducts();
     } catch (err) {
@@ -19,6 +20,7 @@ const ProductList = () => {
     }
   };
   const navigate = useNavigate();
+  if (products === undefined) return null;
   return (
     <main>
       <Header title="Product List">
@@ -26,7 +28,9 @@ const ProductList = () => {
         <button
           onClick={onDelete}
           disabled={!(products.filter((p) => p.checked).length > 0)}
-        >MASS DELETE</button>
+        >
+          MASS DELETE
+        </button>
       </Header>
       <div className={styles.productList}>
         {products.map((p) => (
@@ -37,6 +41,7 @@ const ProductList = () => {
             checkHandler={handleCheck}
           />
         ))}
+
       </div>
     </main>
   );
