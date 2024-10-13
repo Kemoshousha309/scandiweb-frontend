@@ -21,7 +21,6 @@ export async function addProduct(product: ProductFormFields) {
     dimensions: [product.height, product.width, product.length],
     type: product.type?.toLowerCase(),
   };
-  console.log({ body });
   const response = await fetch(baseUrl + "/products", {
     method: "POST",
     body: JSON.stringify(body),

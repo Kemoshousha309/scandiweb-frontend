@@ -34,9 +34,9 @@ export function useAddProductForm() {
           setError(`${key}: ${err[key]}`);
         }
       }
+    }else {
+      navigate("/");
     }
-
-    navigate("/");
   };
 
   return { handleFormChange, formFields, submitHandler, error };
